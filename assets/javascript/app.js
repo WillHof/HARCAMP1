@@ -1,4 +1,49 @@
 $(document).ready(function () {
+    var carApiKey = "ywMlhTlLMN4jF28GMbYiWUebS80oREcu"
+    var carURL
+    //carsearches
+
+    //mapsearch
+    //populate var location with input from user on button click
+    var location
+    var locationResult
+    var locationURL
+    var latitude
+    var longitude
+    var carResults
+    var year
+    var make
+    var model
+    function setSearchVars() {
+        location = $("#location").val();
+        console.log(location)
+        year = $("#year").val();
+        make = $("#make").val();
+        model = $("#model").val();
+        locationURL = `https://nominatim.openstreetmap.org/search?q=${location}&&format=json`;
+    }
+    function returnCars(response) {
+        latitude = response[0].lat;
+        longitude = response[0].lon;
+        //carURL = `http://api.marketcheck.com/v1/search?api_key={${carApiKey}}&year=${year}&make=${make}&model=${model}&latitude=${latitude}&longitude=${longitude}&radius=50&car_type=used&start=0&rows=12`
+        //console.log(carURL)
+        $.ajax({
+            url: carURL,
+            method: "GET"
+        }).then(function (response) {
+            console.log(response)
+        })
+    }
+    $("#carSearch").on("click", function () {
+        setSearchVars()
+        $.ajax({
+            url: locationURL,
+            method: "GET"
+        }).then(function (response) {
+            console.log(response);
+            returnCars(response)
+        })
+    });
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyCM34i7qZJ-N-AWtCTJP5JE-sEJQGVCFBU",
@@ -9,6 +54,18 @@ $(document).ready(function () {
         messagingSenderId: "1044240317624"
     };
     firebase.initializeApp(config);
+
+    // $("#login").on("click", function () {
+    //     var provider = new firebase.auth.GoogleAuthProvider();
+    //     console.log(provider)
+    //     firebase.auth().signInWithPopup(provider)
+    //         .then(result => {
+    //             user = result.user;
+    //             $("#Hello").html(`Hello ${user.displayName}`)
+    //             return (user)
+    //         })
+    // })
+
     // var uiConfig = {
     //     signInSuccessUrl: '<url-to-redirect-to-on-success>',
     //     signInOptions: [
