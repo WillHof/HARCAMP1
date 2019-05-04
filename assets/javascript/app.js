@@ -1,10 +1,6 @@
 $(document).ready(function () {
     var carApiKey = "ywMlhTlLMN4jF28GMbYiWUebS80oREcu"
     var carURL
-    //carsearches
-
-    //mapsearch
-    //populate var location with input from user on button click
     var location
     var locationResult
     var locationURL
@@ -14,6 +10,9 @@ $(document).ready(function () {
     var year
     var make
     var model
+
+
+    //puts user inputs into variables, creates url to translate current location (free text) into geocoordinates
     function setSearchVars() {
         location = $("#location").val();
         console.log(location)
@@ -22,10 +21,11 @@ $(document).ready(function () {
         model = $("#model").val();
         locationURL = `https://nominatim.openstreetmap.org/search?q=${location}&&format=json`;
     }
+    //takes geocoords and returns object of cars in a 50 mile radius from those coords
     function returnCars(response) {
         latitude = response[0].lat;
         longitude = response[0].lon;
-        //carURL = `http://api.marketcheck.com/v1/search?api_key={${carApiKey}}&year=${year}&make=${make}&model=${model}&latitude=${latitude}&longitude=${longitude}&radius=50&car_type=used&start=0&rows=12`
+        // carURL = `http://api.marketcheck.com/v1/search?api_key={${carApiKey}}&year=${year}&make=${make}&model=${model}&latitude=${latitude}&longitude=${longitude}&radius=50&car_type=used&start=0&rows=4`
         //console.log(carURL)
         $.ajax({
             url: carURL,
@@ -34,6 +34,7 @@ $(document).ready(function () {
             console.log(response)
         })
     }
+    //sets the search variables, gets location data returned from the maps api, punches that into the car search, executes car search
     $("#carSearch").on("click", function () {
         setSearchVars()
         $.ajax({
@@ -44,6 +45,7 @@ $(document).ready(function () {
             returnCars(response)
         })
     });
+
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyCM34i7qZJ-N-AWtCTJP5JE-sEJQGVCFBU",
