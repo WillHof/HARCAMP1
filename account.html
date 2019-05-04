@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./assets/style/">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
         integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
@@ -48,67 +48,46 @@
     </nav>
 </div>
 
-
-
 <body>
-
     <div class="container">
         <div class="row">
-            <div class="col-6 col-sm-4 col-md-4">
-                <div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn">Make</button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-                        <a href="#about">Audi</a>
-                        <a href="#base">BMW</a>
-                        <a href="#blog">Chevrolet</a>
-                        <a href="#contact">Dodge</a>
-                        <a href="#custom">Ford</a>
-                        <a href="#support">Mclearn</a>
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        Create an Account
                     </div>
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-md-4">
-                <div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn">Model</button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-                        <a href="#about">Audi</a>
-                        <a href="#base">BMW</a>
-                        <a href="#blog">Chevrolet</a>
-                        <a href="#contact">Dodge</a>
-                        <a href="#custom">Ford</a>
-                        <a href="#support">Mclearn</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-md-4">
-                <div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn">Year</button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-                        <a href="#about">Audi</a>
-                        <a href="#base">BMW</a>
-                        <a href="#blog">Chevrolet</a>
-                        <a href="#contact">Dodge</a>
-                        <a href="#custom">Ford</a>
-                        <a href="#support">Mclearn</a>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" placeholder="Enter email">
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with
+                                    anyone
+                                    else.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1"
+                                    placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <label for="confrimPassword">Confrim Password</label>
+                                <input type="password" class="form-control" id="confrimPassword" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <label for="zipCode">Zip Code</label>
+                                <input type="password" class="form-control" id="zipCode" placeholder="Zip Code">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-
-
-
-
-
-
-    <script type="text/javascript" src="./button.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </body>
-
-</html>
