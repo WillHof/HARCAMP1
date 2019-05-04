@@ -30,22 +30,56 @@
                 </li>
             </ul>
         </div>
-        <div class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="./index.en.html" id="dropdown09" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false"><span class="flag-icon flag-icon-us"> </span>
-                English</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown09"><a class="dropdown-item"
-                    href="./index.fr.html"><span class="flag-icon flag-icon-fr"> </span> Français</a>
-                <a class="dropdown-item" href="./index.es.html"><span class="flag-icon flag-icon-es"> </span>
-                    Español</a>
-                <a class="dropdown-item" href="./index.pr.html"><span class="flag-icon flag-icon-pt"> </span>
-                    Português</a>
-            </div>
-        </div>
-        <div class='phone-link'>
-            <a href="tel:12-12-12-12"><i class="fas fa-phone fa-rotate-90"></i>12 12 12 12</a>
-        </div>
-    </nav>
+
+        <form>
+            <select onchange="getval(this);" id="targetLanguage" class="selectpicker" data-width="fit">
+                <option value="EN" data-content='<span class="flag-icon flag-icon-us"></span> English'
+                    selected="selected">
+                    English
+                </option>
+                <option value="AR" data-content='<span class="flag-icon flag-icon-ma"></span> العربية'>العربية</option>
+                <option value="ES" data-content='<span class="flag-icon flag-icon-mx"></span> Español'>Español</option>
+                <option value="ZH" data-content='<span class="flag-icon flag-icon-cn"></span> Mandarin'>Chinese
+                    (Mandarin)
+                </option>
+                <option value="CS" data-content='<span class="flag-icon flag-icon-cz"></span> Czech'>Czech</option>
+                <option value="PT" data-content='<span class="flag-icon flag-icon-br"></span> Portuguese'>Portuguese
+                </option>
+                <option value="TR" data-content='<span class="flag-icon flag-icon-tr"></span> Turkish'>Turkish</option>
+                <option value="RU" data-content='<span class="flag-icon flag-icon-ru"></span> Russia'>Russia</option>
+                <option value="FR" data-content='<span class="flag-icon flag-icon-fr"></span> French'>French</option>
+            </select>
+        </form>
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script type="text/javascript">
+
+            //  when the select change
+            function getval(sel) {
+                var url = "https://translation.googleapis.com/language/translate/v2";
+                //Strings requiring translation
+                url += "?q=" + escape($("#textField").text());
+                url += "&q=" + escape($("#title").text());
+                url += "&q=" + escape($("#title1").text());
+                //Target language
+                url += "&target=" + sel.value;
+                //Google API key
+                url += "&key=AIzaSyBSBPR0gc3TA-Sh_T8x_X1aIe9a2M02gN0";
+                $.get(url, function (data, status) {
+                    //Results are returned in an array following the order they were passed.
+                    $("#textField").text(data.data.translations[0].translatedText);
+                    $("#title").text(data.data.translations[1].translatedText);
+                    $("#title1").text(data.data.translations[2].translatedText);
+                });
+            };
+        </script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js'></script>
+        <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+        <script src="./picksel.js"></script>
+
+</div>
+</nav>
 </div>
 
 
@@ -56,9 +90,9 @@
         <div class="row">
             <div class="col-6 col-sm-4 col-md-4">
                 <div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn">Make</button>
+                    <button onclick="myFunction()" class="dropbtn" id="Make">Make</button>
                     <div id="myDropdown" class="dropdown-content">
-                        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                        <input type="text" id="myInput" onkeyup="filterFunction()">
                         <a href="#about">Audi</a>
                         <a href="#base">BMW</a>
                         <a href="#blog">Chevrolet</a>
@@ -70,9 +104,9 @@
             </div>
             <div class="col-6 col-sm-4 col-md-4">
                 <div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn">Model</button>
+                    <button onclick="myFunction()" class="dropbtn" id="Model">Model</button>
                     <div id="myDropdown" class="dropdown-content">
-                        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                        <input type="text" id="myInput" onkeyup="filterFunction()">
                         <a href="#about">Audi</a>
                         <a href="#base">BMW</a>
                         <a href="#blog">Chevrolet</a>
@@ -84,9 +118,9 @@
             </div>
             <div class="col-6 col-sm-4 col-md-4">
                 <div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn">Year</button>
+                    <button onclick="myFunction()" class="dropbtn" id="Year">Year</button>
                     <div id="myDropdown" class="dropdown-content">
-                        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                        <input type="text" id="myInput" onkeyup="filterFunction()">
                         <a href="#about">Audi</a>
                         <a href="#base">BMW</a>
                         <a href="#blog">Chevrolet</a>
@@ -99,6 +133,32 @@
         </div>
     </div>
 
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        //  when the select change
+        function getval(sel) {
+            var url = "https://translation.googleapis.com/language/translate/v2";
+            //Strings requiring translation
+            url += "?q=" + escape($("#Model").text());
+            url += "&q=" + escape($("#Make").text());
+            url += "&q=" + escape($("#Year").text());
+            //Target language
+            url += "&target=" + sel.value;
+            //Google API key
+            url += "&key=AIzaSyBSBPR0gc3TA-Sh_T8x_X1aIe9a2M02gN0";
+            $.get(url, function (data, status) {
+                //Results are returned in an array following the order they were passed.
+                $("#Make").text(data.data.translations[0].translatedText);
+                $("#Model").text(data.data.translations[1].translatedText);
+                $("#Year").text(data.data.translations[2].translatedText);
+            });
+        };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+    <script src="./picksel.js"></script>
 
 
 
@@ -106,7 +166,7 @@
 
 
     <script type="text/javascript" src="./button.js"></script>
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </body>
