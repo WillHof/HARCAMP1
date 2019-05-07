@@ -23,7 +23,7 @@ $(document).ready(function () {
            <p class="card-text">Mileage: <span id="miles${i}">${carResults[i].miles}</span></p>
            <p class="card-text">Dealer: <span id="dealerName${i}">${carResults[i].dealer.name}</span></p>
            <p class="card-text">Dealer Zip: <span id="dealerZip${i}">${carResults[i].dealer.zip}</span></p>
-           <a href=${carResults[i].vdp_url} class="btn btn-primary">Click for Details</a>
+           <a href=${carResults[i].vdp_url} class="btn btn-primary" id="details">Click for Details</a>
        </div>
    </div>`
             );
