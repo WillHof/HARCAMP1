@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var carApiKey = "ywMlhTlLMN4jF28GMbYiWUebS80oREcu"
+    var carApiKey = "Ot4VrHOqlIfQOuSpvIX7bVnxMGTnuDAd"
     var carURL
     var location
     var locationResult
@@ -11,7 +11,24 @@ $(document).ready(function () {
     var make
     var model
 
-
+    function createCars(carResults) {
+        for (i = 0; i < carResults.length; i++) {
+            $("#appendCars").append(
+                `<div class="card" style="width: 18rem;">
+       <img src=${carResults[i].media.photo_links[0]} class="card-img-top">
+       <div class="card-body">
+           <h5 class="card-title"></h5>
+           <p class="card-text">Name: <span id="name${i}">${carResults[i].heading}</span></p>
+           <p class="card-text">Price: <span id="price${i}">${carResults[i].price}</span></p>
+           <p class="card-text">Mileage: <span id="miles${i}">${carResults[i].miles}</span></p>
+           <p class="card-text">Dealer: <span id="dealerName${i}">${carResults[i].dealer.name}</span></p>
+           <p class="card-text">Dealer Zip: <span id="dealerZip${i}">${carResults[i].dealer.zip}</span></p>
+           <a href="#" class="btn btn-primary">Click for Details</a>
+       </div>
+   </div>`
+            );
+        }
+    }
     //puts user inputs into variables, creates url to translate current location (free text) into geocoordinates
     function setSearchVars() {
         location = $("#location").val();
@@ -25,13 +42,16 @@ $(document).ready(function () {
     function returnCars(response) {
         latitude = response[0].lat;
         longitude = response[0].lon;
-        // carURL = `http://api.marketcheck.com/v1/search?api_key={${carApiKey}}&year=${year}&make=${make}&model=${model}&latitude=${latitude}&longitude=${longitude}&radius=50&car_type=used&start=0&rows=4`
-        //console.log(carURL)
+        // carURL = "https://csa-proxy.herokuapp.com/search"
+        carURL = `http://csa-proxy.herokuapp.com/search?api_key=${carApiKey}&year=${year}&make=${make}&model=${model}&latitude=${latitude}&longitude=${longitude}&radius=50&car_type=used&start=0&rows=16`
+        console.log(carURL)
         $.ajax({
             url: carURL,
             method: "GET"
         }).then(function (response) {
-            console.log(response)
+            carResults = response.listings
+            console.log(carResults)
+            createCars(carResults)
         })
     }
     //sets the search variables, gets location data returned from the maps api, punches that into the car search, executes car search
@@ -42,7 +62,7 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (response) {
             console.log(response);
-            returnCars(response)
+            returnCars(response);
         })
     });
 
