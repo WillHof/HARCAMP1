@@ -18,12 +18,12 @@ $(document).ready(function () {
        <img src=${carResults[i].media.photo_links[0]} class="card-img-top">
        <div class="card-body">
            <h5 class="card-title"></h5>
-           <p class="card-text">Name: <span id="name${i}">${carResults[i].heading}</span></p>
-           <p class="card-text">Price: <span id="price${i}">${carResults[i].price}</span></p>
-           <p class="card-text">Mileage: <span id="miles${i}">${carResults[i].miles}</span></p>
-           <p class="card-text">Dealer: <span id="dealerName${i}">${carResults[i].dealer.name}</span></p>
-           <p class="card-text">Dealer Zip: <span id="dealerZip${i}">${carResults[i].dealer.zip}</span></p>
-           <a href=${carResults[i].vdp_url} class="btn btn-primary" id="details">Click for Details</a>
+           <p class="card-text">${nameT} <span id="name${i}">${carResults[i].heading}</span></p>
+           <p class="card-text">${priceT}: <span id="price${i}">${carResults[i].price}</span></p>
+           <p class="card-text">${mileageT}<span id="miles${i}">${carResults[i].miles}</span></p>
+           <p class="card-text">${dealerNameT} <span id="dealerName${i}">${carResults[i].dealer.name}</span></p>
+           <p class="card-text">${dealerZipT} <span id="dealerZip${i}">${carResults[i].dealer.zip}</span></p>
+           <a href=${carResults[i].vdp_url} class="btn btn-primary" id="details">${detailsT}</a>
        </div>
    </div>`
             );
