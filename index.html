@@ -18,6 +18,7 @@
 
 
     <title>Document</title>
+
 </head>
 
 <div class="container1">
@@ -37,9 +38,8 @@
                 </li>
             </ul>
         </div>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
-<<<<<<< HEAD
-=======
         <form>
             <select onchange="getval(this);" id="targetLanguage" class="selectpicker" data-width="fit">
                 <option value="EN" data-content='<span class="flag-icon flag-icon-us"></span> English'
@@ -59,13 +59,9 @@
                 <option value="FR" data-content='<span class="flag-icon flag-icon-fr"></span> French'>French</option>
             </select>
         </form>
-
-
-
     </nav>
 </div>
 
->>>>>>> e5c7a600c0192539f57ec1769404d0bd9309d2d0
 <body>
 
     <div class="container">
@@ -126,36 +122,45 @@
         </div>
     </div>
 
-<<<<<<< HEAD
-    <script src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase-database.js"></script>
-    <script type="text/javascript" src="./button.js"></script>
-    <script src="./assets/javascript/app.js"></script>
-=======
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript">
-
+        var nameT = "Name: "
+        var priceT = "Price: "
+        var mileageT = "Miles: "
+        var dealerNameT = "Dealer: "
+        var dealerZipT = "Dealer Zip: "
+        var detailsT = "Click for Details"
         //  when the select change
         function getval(sel) {
             var url = "https://translation.googleapis.com/language/translate/v2";
             //Strings requiring translation
-            url += "?q=" + escape($("#Model").text());
-            url += "&q=" + escape($("#Make").text());
-            url += "&q=" + escape($("#Year").text());
+            // url += "?q=" + escape($("#Model").text());
+            // url += "&q=" + escape($("#Make").text());
+            // url += "&q=" + escape($("#Year").text());
+            url += "?q=" + "Name:";
+            url += "&q=" + "Price: ";
+            url += "&q=" + "Miles: ";
+            url += "&q=" + "Dealer: ";
+            url += "&q=" + "Dealer Zip: ";
+            url += "&q=" + "Click for Details";
             //Target language
             url += "&target=" + sel.value;
             //Google API key
             url += "&key=AIzaSyBSBPR0gc3TA-Sh_T8x_X1aIe9a2M02gN0";
             $.get(url, function (data, status) {
                 //Results are returned in an array following the order they were passed.
-                $("#Make").text(data.data.translations[0].translatedText);
-                $("#Model").text(data.data.translations[1].translatedText);
-                $("#Year").text(data.data.translations[2].translatedText);
+                // $("#Make").text(data.data.translations[0].translatedText);
+                // $("#Model").text(data.data.translations[1].translatedText);
+                // $("#Year").text(data.data.translations[2].translatedText);
+                nameT = data.data.translations[0].translatedText;
+                priceT = data.data.translations[1].translatedText;
+                mileageT = data.data.translations[2].translatedText;
+                dealerNameT = data.data.translations[3].translatedText;
+                dealerZipT = data.data.translations[4].translatedText;
+                detailsT = data.data.translations[5].translatedText;
+
+                console.log(detailsT);
+
             });
         };
     </script>
@@ -163,8 +168,7 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js'></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
     <script src="./assets/javascript/picksel.js"></script>
->>>>>>> e5c7a600c0192539f57ec1769404d0bd9309d2d0
-
+    <script src="assets/javascript/app.js"></script>
 </body>
 
 </html>

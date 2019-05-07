@@ -13,13 +13,14 @@ $(document).ready(function () {
 
     function createCars(carResults) {
         for (i = 0; i < carResults.length; i++) {
+            console.log(nameT)
             $("#appendCars").append(
                 `<div class="card" style="width: 18rem;">
        <img src=${carResults[i].media.photo_links[0]} class="card-img-top">
        <div class="card-body">
            <h5 class="card-title"></h5>
            <p class="card-text">${nameT} <span id="name${i}">${carResults[i].heading}</span></p>
-           <p class="card-text">${priceT}: <span id="price${i}">${carResults[i].price}</span></p>
+           <p class="card-text">${priceT} <span id="price${i}">${carResults[i].price}</span></p>
            <p class="card-text">${mileageT}<span id="miles${i}">${carResults[i].miles}</span></p>
            <p class="card-text">${dealerNameT} <span id="dealerName${i}">${carResults[i].dealer.name}</span></p>
            <p class="card-text">${dealerZipT} <span id="dealerZip${i}">${carResults[i].dealer.zip}</span></p>
@@ -75,7 +76,7 @@ $(document).ready(function () {
         storageBucket: "harcamp1-f7669.appspot.com",
         messagingSenderId: "1044240317624"
     };
-    firebase.initializeApp(config);
+    // firebase.initializeApp(config);
 
     // $("#login").on("click", function () {
     //     var provider = new firebase.auth.GoogleAuthProvider();
