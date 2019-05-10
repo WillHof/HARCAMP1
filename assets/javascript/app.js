@@ -56,6 +56,7 @@ $(document).ready(function () {
             url: locationURL,
             method: "GET"
         }).then(function (response) {
+            console.log(response)
             returnCars(response);
         })
     });
