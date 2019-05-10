@@ -18,11 +18,12 @@
 
 
     <title>Document</title>
+
 </head>
 
 <div class="container1">
     <nav class="navbar navbar-expand-lg navbar-light bg-light rounded ">
-        <span class="navbar-toggler-icon"></span>
+        <!-- <span class="navbar-toggler-icon"></span> -->
         </button>
         <div class="collapse navbar-collapse" id="navbarsExample09">
             <ul class="navbar-nav w-100 justify-content-end">
@@ -37,6 +38,7 @@
                 </li>
             </ul>
         </div>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
         <form>
             <select onchange="getval(this);" id="targetLanguage" class="selectpicker" data-width="fit">
@@ -57,80 +59,62 @@
                 <option value="FR" data-content='<span class="flag-icon flag-icon-fr"></span> French'>French</option>
             </select>
         </form>
-
-
-
     </nav>
 </div>
 
 <body>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-6 col-sm-4 col-md-4">
-                <div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn" id="Make">Make</button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <input type="text" id="myInput" onkeyup="filterFunction()">
-                        <a href="#about">Audi</a>
-                        <a href="#base">BMW</a>
-                        <a href="#blog">Chevrolet</a>
-                        <a href="#contact">Dodge</a>
-                        <a href="#custom">Ford</a>
-                        <a href="#support">Mclearn</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-md-4">
-                <div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn" id="Model">Model</button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <input type="text" id="myInput" onkeyup="filterFunction()">
-                        <a href="#about">Audi</a>
-                        <a href="#base">BMW</a>
-                        <a href="#blog">Chevrolet</a>
-                        <a href="#contact">Dodge</a>
-                        <a href="#custom">Ford</a>
-                        <a href="#support">Mclearn</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-sm-4 col-md-4">
-                <div class="dropdown">
-                    <button onclick="myFunction()" class="dropbtn" id="Year">Year</button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <input type="text" id="myInput" onkeyup="filterFunction()">
-                        <a href="#about">Audi</a>
-                        <a href="#base">BMW</a>
-                        <a href="#blog">Chevrolet</a>
-                        <a href="#contact">Dodge</a>
-                        <a href="#custom">Ford</a>
-                        <a href="#support">Mclearn</a>
-                    </div>
-                </div>
-            </div>
+    <form>
+        <input class="form-control" type="text" id="location" placeholder="location">
+        <input class="form-control" type="text" id="year" placeholder="Year">
+        <input class="form-control" type="text" id="make" placeholder="Make">
+        <input class="form-control" type="text" id="model" placeholder="Model">
+    </form>
+    <div class="btn btn-success" id="carSearch">Search</div>
+    <div class="row">
+        <div class="col-md-12" id="appendCars">
         </div>
     </div>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript">
-
+        var nameT = "Name: "
+        var priceT = "Price: "
+        var mileageT = "Miles: "
+        var dealerNameT = "Dealer: "
+        var dealerZipT = "Dealer Zip: "
+        var detailsT = "Click for Details"
         //  when the select change
         function getval(sel) {
             var url = "https://translation.googleapis.com/language/translate/v2";
             //Strings requiring translation
-            url += "?q=" + escape($("#Model").text());
-            url += "&q=" + escape($("#Make").text());
-            url += "&q=" + escape($("#Year").text());
+            // url += "?q=" + escape($("#Model").text());
+            // url += "&q=" + escape($("#Make").text());
+            // url += "&q=" + escape($("#Year").text());
+            url += "?q=" + "Name:";
+            url += "&q=" + "Price: ";
+            url += "&q=" + "Miles: ";
+            url += "&q=" + "Dealer: ";
+            url += "&q=" + "Dealer Zip: ";
+            url += "&q=" + "Click for Details";
+            url += "&q=" + escape($("#carSearch").text());
             //Target language
             url += "&target=" + sel.value;
             //Google API key
             url += "&key=AIzaSyBSBPR0gc3TA-Sh_T8x_X1aIe9a2M02gN0";
             $.get(url, function (data, status) {
                 //Results are returned in an array following the order they were passed.
-                $("#Make").text(data.data.translations[0].translatedText);
-                $("#Model").text(data.data.translations[1].translatedText);
-                $("#Year").text(data.data.translations[2].translatedText);
+                // $("#Make").text(data.data.translations[0].translatedText);
+                // $("#Model").text(data.data.translations[1].translatedText);
+                // $("#Year").text(data.data.translations[2].translatedText);
+                nameT = data.data.translations[0].translatedText;
+                priceT = data.data.translations[1].translatedText;
+                mileageT = data.data.translations[2].translatedText;
+                dealerNameT = data.data.translations[3].translatedText;
+                dealerZipT = data.data.translations[4].translatedText;
+                detailsT = data.data.translations[5].translatedText;
+                $("#carSearch").text(data.data.translations[6].translatedText);
+
             });
         };
     </script>
@@ -138,7 +122,7 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js'></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
     <script src="./assets/javascript/picksel.js"></script>
-
+    <script src="assets/javascript/app.js"></script>
 </body>
 
 </html>
