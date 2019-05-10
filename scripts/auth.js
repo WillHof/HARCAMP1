@@ -1,12 +1,21 @@
 var uservar;
 var userID;
+function loadSearches() {
+  $("#userSearches").empty()
+  database.ref(`users/${userID}/searches`).on("child_added", function (snapshot) {
+    var buttonLink = snapshot.val().Searches;
+    var buttonText = snapshot.val().Make;
+    var buttonModel = snapshot.val().Model
+    var buttonYear = snapshot.val().Year
+    $("#userSearches").append(`<a class="dropdown-item saved-search" year="${buttonYear}" model="${buttonModel}" value = "${buttonLink}" > ${buttonText}</a > `)
+  })
+}
 //identifies basic status of user
 auth.onAuthStateChanged(user => {
   if (user) {
-    console.log('user logged in: ', user);
     uservar = user
     userID = user.uid
-    console.log(carURL)
+    loadSearches()
   } else {
     console.log('user logged out');
   }
@@ -36,7 +45,7 @@ signupForm.addEventListener('submit', (e) => {
 });
 
 // logout
-const logout = document.querySelector('#logout');
+const logout = document.querySelector('#logoutT');
 logout.addEventListener('click', (e) => {
   e.preventDefault();
   auth.signOut();
@@ -58,15 +67,18 @@ loginForm.addEventListener('submit', (e) => {
     const modal = document.querySelector('#modal-login');
     M.Modal.getInstance(modal).close();
     loginForm.reset();
+    loadSearches()
   });
 
 });
-
+//saves the search to the user's profile in the database
 const saveSearch = document.querySelector('#saveSearch');
 saveSearch.addEventListener('click', (e) => {
   e.preventDefault();
-  carURL = "test"
   database.ref(`users/${userID}/searches`).push({
     Searches: carURL,
+    Make: make,
+    Model: model,
+    Year: year,
   });
 });
