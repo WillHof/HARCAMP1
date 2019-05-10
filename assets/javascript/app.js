@@ -8,7 +8,6 @@ $(document).ready(function () {
     var longitude
     var carResults
 
-
     function createCars(carResults) {
         $("#appendCars").empty()
         for (i = 0; i < carResults.length; i++) {
