@@ -40,34 +40,29 @@ logout.addEventListener('click', (e) => {
   e.preventDefault();
   auth.signOut();
   userID = ""
-  alert("Goodbye" + email);
 });
 
 // login
 const loginForm = document.querySelector('#login-form');
 loginForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  //console.log(cred)
   // get user info
   const email = loginForm['login-email'].value;
   const password = loginForm['login-password'].value;
 
-
   // log the user in
-  try {
-    auth.signInWithEmailAndPassword(email, password).then((cred) => {
+  auth.signInWithEmailAndPassword(email, password)
+    .then((cred) => {
       // close the signup modal & reset form
       cred.user.uid = userID
       const modal = document.querySelector('#modal-login');
+
       M.Modal.getInstance(modal).close();
+
       loginForm.reset();
-
-      alert("Welcome " + email);
-
+    })
+    .catch(err => {
+      alert(err.message);
     });
-  }
-  catch (err) {
-    alert("Sorry, it apperas your ID/Password are wrong");
-  }
 
 });
