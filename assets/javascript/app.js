@@ -8,7 +8,6 @@ $(document).ready(function () {
     var longitude
     var carResults
     var year
-    var make
     var model
 
     function createCars(carResults) {
@@ -66,6 +65,4 @@ $(document).ready(function () {
             returnCars(response);
         })
     });
-
-
 })

@@ -1,12 +1,19 @@
 var uservar;
 var userID;
+function loadSearches() {
+  $("#userSearches").empty()
+  database.ref(`users/${userID}/searches`).on("child_added", function (snapshot) {
+    var buttonLink = snapshot.val().Searches;
+    var buttonText = snapshot.val().Make;
+    $("#userSearches").append(`<a class="dropdown-item" value=${buttonLink}>${buttonText}</a>`)
+  })
+}
 //identifies basic status of user
 auth.onAuthStateChanged(user => {
   if (user) {
-    console.log('user logged in: ', user);
     uservar = user
     userID = user.uid
-    console.log(carURL)
+    loadSearches()
   } else {
     console.log('user logged out');
   }
@@ -65,8 +72,8 @@ loginForm.addEventListener('submit', (e) => {
 const saveSearch = document.querySelector('#saveSearch');
 saveSearch.addEventListener('click', (e) => {
   e.preventDefault();
-  carURL = "test"
   database.ref(`users/${userID}/searches`).push({
     Searches: carURL,
+    Make: make
   });
 });
