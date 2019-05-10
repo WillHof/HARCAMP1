@@ -107,13 +107,27 @@
 
 <body>
     <div class="container">
-        <form>
-            <input class="form-control" type="text" id="location" placeholder="location">
-            <input class="form-control" type="text" id="year" placeholder="Year">
-            <input class="form-control" type="text" id="make" placeholder="Make">
-            <input class="form-control" type="text" id="model" placeholder="Model">
-        </form>
-        <div class="btn btn-success" id="carSearch">Search</div>
+        <div class="row" id="searchRowTop">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <form id="searchForm">
+                    <input class="form-control" type="text" id="location" placeholder="Location">
+                    <input class="form-control" type="text" id="year" placeholder="Year">
+                    <input class="form-control" type="text" id="make" placeholder="Make">
+                    <input class="form-control" type="text" id="model" placeholder="Model">
+                </form>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div class="row" id="searchRowBottom">
+            <div class="col-md-1">
+                <div class="col-md-10">
+                    <div class="btn btn-success" id="carSearch">Search</div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-12" id="appendCars">
             </div>

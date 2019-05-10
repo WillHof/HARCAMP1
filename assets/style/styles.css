@@ -120,3 +120,19 @@ body{
   position: relative;
   transform: translateY(40%);
 }
+#searchRowTop{
+  background-color:white;
+  border-top-left-radius:15px;
+  border-top-right-radius:15px;
+  margin-bottom:0px;
+  padding-top:15px;
+  padding-bottom:15px;
+}
+#searchRowBottom{
+  background-color:white;
+  border-bottom-left-radius:15px;
+  border-bottom-right-radius:15px;
+  margin-bottom:0px;
+  padding-top:15px;
+  padding-bottom:15px;
+}
