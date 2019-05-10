@@ -1,12 +1,12 @@
 var uservar;
 var userID;
-var carURL = "test"
 //identifies basic status of user
 auth.onAuthStateChanged(user => {
   if (user) {
     console.log('user logged in: ', user);
     uservar = user
     userID = user.uid
+    console.log(carURL)
   } else {
     console.log('user logged out');
   }
@@ -47,7 +47,6 @@ logout.addEventListener('click', (e) => {
 const loginForm = document.querySelector('#login-form');
 loginForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  console.log(cred)
   // get user info
   const email = loginForm['login-email'].value;
   const password = loginForm['login-password'].value;
@@ -64,9 +63,10 @@ loginForm.addEventListener('submit', (e) => {
 });
 
 const saveSearch = document.querySelector('#saveSearch');
-  saveSearch.addEventListener('click', (e) => {
-    e.preventDefault();
-    database.ref(`users/${userID}/searches`).set({
-      Searches: carURL,
-    });
+saveSearch.addEventListener('click', (e) => {
+  e.preventDefault();
+  carURL = "test"
+  database.ref(`users/${userID}/searches`).push({
+    Searches: carURL,
   });
+});

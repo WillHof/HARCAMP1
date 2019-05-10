@@ -1,6 +1,6 @@
 $(document).ready(function () {
     var carApiKey = "Ot4VrHOqlIfQOuSpvIX7bVnxMGTnuDAd"
-    var carURL
+
     var location
     var locationResult
     var locationURL
@@ -12,9 +12,8 @@ $(document).ready(function () {
     var model
 
     function createCars(carResults) {
+        $("#appendCars").empty()
         for (i = 0; i < carResults.length; i++) {
-            console.log(nameT)
-            $("#appendCars").empty()
             $("#appendCars").append(
                 `<div class="card" style="width: 18rem;">
        <img src=${carResults[i].media.photo_links[0]} class="card-img-top">
@@ -68,13 +67,5 @@ $(document).ready(function () {
         })
     });
 
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyCM34i7qZJ-N-AWtCTJP5JE-sEJQGVCFBU",
-        authDomain: "harcamp1-f7669.firebaseapp.com",
-        databaseURL: "https://harcamp1-f7669.firebaseio.com",
-        projectId: "harcamp1-f7669",
-        storageBucket: "harcamp1-f7669.appspot.com",
-        messagingSenderId: "1044240317624"
-    };
+
 })
