@@ -16,10 +16,10 @@
   display: inline-block;
 }
 
-.dropdownthree {
+/* .dropdownthree {
   position: relative;
   display: inline-block;
-}
+} */
 
 .dropdown-content {
   display: none;
@@ -59,7 +59,7 @@
 
 #myInput {
   border-box: box-sizing;
-  background-image: url('searchicon.png');
+  /* background-image: url('searchicon.png'); */
   background-position: 14px 12px;
   background-repeat: no-repeat;
   font-size: 16px;
@@ -73,6 +73,7 @@
 .dropdown {
   position: relative;
   display: inline-block;
+  right: 200px;
 }
 
 .dropdown-content {
@@ -95,3 +96,31 @@
 .dropdown a:hover {background-color: #ddd;}
 
 .show {display: block;}
+.card{
+  margin-right: .4rem;
+  margin-left: .4rem;
+  margin-bottom: .4rem;
+  float: left;
+}
+
+h2{
+  color: #26a69a;
+  position: relative;
+  left: 205px;
+  bottom: 5px;
+}
+
+form{
+  position: relative;
+  bottom: 4px;
+}
+
+#login{
+  position: relative;
+  top: 6px;
+}
+
+#authText{
+  position: relative;
+  top: 6px;
+}
