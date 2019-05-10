@@ -5,7 +5,9 @@ function loadSearches() {
   database.ref(`users/${userID}/searches`).on("child_added", function (snapshot) {
     var buttonLink = snapshot.val().Searches;
     var buttonText = snapshot.val().Make;
-    $("#userSearches").append(`<a class="dropdown-item" value=${buttonLink}>${buttonText}</a>`)
+    var buttonModel = snapshot.val().Model
+    var buttonYear = snapshot.val().Year
+    $("#userSearches").append(`<a class="dropdown-item saved-search" year="${buttonYear}" model="${buttonModel}" value = "${buttonLink}" > ${buttonText}</a > `)
   })
 }
 //identifies basic status of user
@@ -34,7 +36,7 @@ signupForm.addEventListener('submit', (e) => {
     const modal = document.querySelector('#modal-signup');
     console.log(cred)
     userID = cred.user.uid
-    database.ref(`users/${userID}`).set({
+    database.ref(`users / ${userID}`).set({
       UserEmail: email,
     })
     M.Modal.getInstance(modal).close();
@@ -65,15 +67,18 @@ loginForm.addEventListener('submit', (e) => {
     const modal = document.querySelector('#modal-login');
     M.Modal.getInstance(modal).close();
     loginForm.reset();
+    loadSearches()
   });
 
 });
-
+//saves the search to the user's profile in the database
 const saveSearch = document.querySelector('#saveSearch');
 saveSearch.addEventListener('click', (e) => {
   e.preventDefault();
   database.ref(`users/${userID}/searches`).push({
     Searches: carURL,
-    Make: make
+    Make: make,
+    Model: model,
+    Year: year,
   });
 });
