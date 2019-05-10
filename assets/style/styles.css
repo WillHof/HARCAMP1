@@ -1,3 +1,6 @@
+body{
+  background-image: url("./arches.png")
+}
 .dropbtn {
   background-color: black;
   color: white;
@@ -5,10 +8,13 @@
   font-size: 16px;
   border: none;
 }
-
+.caret{
+  display:none;
+}
 .dropdown {
   position: relative;
   display: inline-block;
+  margin-right:10px
 }
 
 .dropdowntwo {
@@ -100,4 +106,16 @@
   margin-left: .4rem;
   margin-bottom: .4rem;
   float: left;
+}
+#logout{
+  line-height:64px;
+  text-align: center
+}
+#authText{
+  line-height:64px;
+  text-align: center
+
+}
+#saveSearch{
+  position:relative;
 }
