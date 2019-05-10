@@ -45,8 +45,8 @@
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Saved Searches
             </button>
-            <div class="dropdown-menu" id="userSearches" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Action</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" id="userSearches" href="#">Action</a>
             </div>
         </div>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -93,17 +93,17 @@
     <!-- LOGIN MODAL -->
     <div id="modal-login" class="modal">
         <div class="modal-content">
-            <h4>Login</h4><br />
+            <h4 id="h5">Login</h4><br />
             <form id="login-form">
                 <div class="input-field">
-                    <input type="email" id="login-emailT" required />
-                    <label for="login-email">Email address</label>
+                    <input type="email" required />
+                    <label for="login-email" id="login-emailT">Email address</label>
                 </div>
                 <div class="input-field">
-                    <input type="password" id="login-passwordT" required />
-                    <label for="login-password">Your password</label>
+                    <input type="password" required />
+                    <label for="login-password" id="login-passwordT">Your password</label>
                 </div>
-                <button class="btn yellow darken-2 z-depth-0" id="loginT">Login</button>
+                <button class="btn yellow darken-2 z-depth-0" id="loginT2">Login</button>
             </form>
         </div>
     </div>
@@ -157,6 +157,10 @@
             url += "&q=" + escape($("#signupT2").text());
             url += "&q=" + escape($("#dropdownMenuButton").text());
             url += "&q=" + escape($("#userSearches").text());
+            url += "&q=" + escape($("#h5").text());
+            url += "&q=" + escape($("#login-emailT").text());
+            url += "&q=" + escape($("#login-passwordT").text());
+            url += "&q=" + escape($("#loginT2").text());
 
 
             //Target language
@@ -183,8 +187,14 @@
                 $("#signup-emailT").text(data.data.translations[16].translatedText);
                 $("#signup-passwordT").text(data.data.translations[17].translatedText);
                 $("#signupT2").text(data.data.translations[18].translatedText);
-                $("#dropdownMenuButton").text(data.data.translations[18].translatedText);
-                $("#userSearches").text(data.data.translations[18].translatedText);
+                $("#dropdownMenuButton").text(data.data.translations[19].translatedText);
+                $("#userSearches").text(data.data.translations[20].translatedText);
+                $("#h5").text(data.data.translations[21].translatedText);
+                $("#login-emailT").text(data.data.translations[22].translatedText);
+                $("#login-passwordT").text(data.data.translations[23].translatedText);
+                $("#loginT2").text(data.data.translations[24].translatedText);
+
+
                 //console.log(detailsT);
             });
         };
