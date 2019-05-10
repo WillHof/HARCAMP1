@@ -136,3 +136,6 @@ body{
   padding-top:15px;
   padding-bottom:15px;
 }
+.card{
+  box-sizing:border-box;
+}
