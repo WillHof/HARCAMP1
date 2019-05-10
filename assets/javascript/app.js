@@ -7,13 +7,6 @@ $(document).ready(function () {
     var latitude
     var longitude
     var carResults
-<<<<<<< HEAD
-
-=======
-    var year
-    var make
-    var model
->>>>>>> hich
 
     function createCars(carResults) {
         $("#appendCars").empty()
@@ -37,10 +30,6 @@ $(document).ready(function () {
     //puts user inputs into variables, creates url to translate current location (free text) into geocoordinates
     function setSearchVars() {
         location = $("#location").val();
-<<<<<<< HEAD
-=======
-        console.log(location)
->>>>>>> hich
         year = $("#year").val();
         make = $("#make").val();
         model = $("#model").val();
@@ -52,19 +41,11 @@ $(document).ready(function () {
         longitude = response[0].lon;
         // carURL = "https://csa-proxy.herokuapp.com/search"
         carURL = `http://csa-proxy.herokuapp.com/search?api_key=${carApiKey}&year=${year}&make=${make}&model=${model}&latitude=${latitude}&longitude=${longitude}&radius=50&car_type=used&start=0&rows=16`
-<<<<<<< HEAD
-=======
-        console.log(carURL)
->>>>>>> hich
         $.ajax({
             url: carURL,
             method: "GET"
         }).then(function (response) {
             carResults = response.listings
-<<<<<<< HEAD
-=======
-            console.log(carResults)
->>>>>>> hich
             createCars(carResults)
         })
     }
@@ -75,7 +56,6 @@ $(document).ready(function () {
             url: locationURL,
             method: "GET"
         }).then(function (response) {
-<<<<<<< HEAD
             returnCars(response);
         })
     });
@@ -90,12 +70,4 @@ $(document).ready(function () {
             createCars(carResults)
         })
     });
-=======
-            console.log(response);
-            returnCars(response);
-        })
-    });
-
-
->>>>>>> hich
 })
