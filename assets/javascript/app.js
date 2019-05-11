@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var carApiKey = "Ot4VrHOqlIfQOuSpvIX7bVnxMGTnuDAd"
+    var carApiKey
 
     var location
     var locationResult
