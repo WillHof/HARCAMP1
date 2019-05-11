@@ -27,22 +27,29 @@
             </button>
             <div class="dropdown-menu" id="userSearches" aria-labelledby="dropdownMenuButton"></div>
         </div>
+<<<<<<< HEAD
+
+
+        <div class="collapse navbar-collapse" id="navbarsExample09">
+            <ul class="navbar-nav w-100 justify-content-end">
+                <li class="logged-in">
+                    <a href="#" class="grey-text" id="logout">Logout</a>
+=======
 
         <!-- <div class="collapse navbar-collapse" id="navbarsExample09">
             <ul class="navbar-nav w-100 justify-content-end">
                 <li class="logged-in">
                     <a href="#" class="grey-text" placeholder="Logout" id="logout">Logout</a>
+>>>>>>> master
                 </li>
                 <li class="logged-out">
-                    <a href="#" class="grey-text modal-trigger" data-target="modal-login" id="loginT"
-                        placeholder="Login">Login</a>
+                    <a href="#" class="grey-text modal-trigger" id="authText" data-target="modal-login">Login</a>
                 </li>
                 <li class="logged-out">
-                    <a href="#" class="grey-text modal-trigger" data-target="modal-signup" id="signupT"
-                        placeholder="Signup">Sign Up</a>
+                    <a href="#" class="grey-text modal-trigger" id="authText2" data-target="modal-signup">Sign up</a>
                 </li>
                 <li>
-                    <div class="btn btn-success" id="saveSearch">Save Search</div>
+                    <div class="btn btn-success" id="saveSearch">Save current search</div>
                 </li>
             </ul>
         </div> -->
@@ -188,7 +195,9 @@
             url += "&q=" + escape($("#signup-emailT").text());
             url += "&q=" + escape($("#signup-passwordT").text());
             url += "&q=" + escape($("#signupT2").text());
-
+            url += "&q=" + escape($("#dropdownMenuButton").text());
+            url += "&q=" + escape($("#authText").text());
+            url += "&q=" + escape($("#authText2").text());
             //Target language
             url += "&target=" + sel.value;
             //Google API key
@@ -213,7 +222,9 @@
                 $("#signup-emailT").text(data.data.translations[16].translatedText);
                 $("#signup-passwordT").text(data.data.translations[17].translatedText);
                 $("#signupT2").text(data.data.translations[18].translatedText);
-
+                $("#dropdownMenuButton").text(data.data.translations[19].translatedText);
+                $("#authText").text(data.data.translations[20].translatedText);
+                $("#authText2").text(data.data.translations[21].translatedText);
                 console.log(detailsT);
             });
         };
