@@ -36,7 +36,7 @@ signupForm.addEventListener('submit', (e) => {
     const modal = document.querySelector('#modal-signup');
     console.log(cred)
     userID = cred.user.uid
-    database.ref(`users / ${userID}`).set({
+    database.ref(`users/${userID}`).set({
       UserEmail: email,
     })
     M.Modal.getInstance(modal).close();

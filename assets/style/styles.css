@@ -1,3 +1,6 @@
+body{
+  background-image: url("./arches.png")
+}
 .dropbtn {
   background-color: black;
   color: white;
@@ -5,10 +8,13 @@
   font-size: 16px;
   border: none;
 }
-
+.caret{
+  display:none;
+}
 .dropdown {
   position: relative;
   display: inline-block;
+  margin-right:10px
 }
 
 .dropdowntwo {
@@ -100,4 +106,36 @@
   margin-left: .4rem;
   margin-bottom: .4rem;
   float: left;
+}
+#logout{
+  line-height:64px;
+  text-align: center
+}
+#authText{
+  line-height:64px;
+  text-align: center
+
+}
+#saveSearch{
+  position: relative;
+  transform: translateY(40%);
+}
+#searchRowTop{
+  background-color:white;
+  border-top-left-radius:15px;
+  border-top-right-radius:15px;
+  margin-bottom:0px;
+  padding-top:15px;
+  padding-bottom:15px;
+}
+#searchRowBottom{
+  background-color:white;
+  border-bottom-left-radius:15px;
+  border-bottom-right-radius:15px;
+  margin-bottom:0px;
+  padding-top:15px;
+  padding-bottom:15px;
+}
+.card{
+  box-sizing:border-box;
 }
