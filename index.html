@@ -89,17 +89,17 @@
 <!-- LOGIN MODAL -->
 <div id="modal-login" class="modal">
     <div class="modal-content">
-        <h4>Login</h4><br />
+        <h4 id="h5">Login</h4><br />
         <form id="login-form">
             <div class="input-field">
-                <input type="email" id="login-email" required />
-                <label for="login-email">Email address</label>
+                <input type="email" required />
+                <label for="login-email" id="login-emailT">Email address</label>
             </div>
             <div class="input-field">
-                <input type="password" id="login-password" required />
-                <label for="login-password">Your password</label>
+                <input type="password" required />
+                <label for="login-password" id="login-passwordT">Your password</label>
             </div>
-            <button class="btn yellow darken-2 z-depth-0" id="loginT">Login</button>
+            <button class="btn yellow darken-2 z-depth-0" id="loginT2">Login</button>
         </form>
     </div>
 </div>
@@ -173,6 +173,10 @@
             url += "&q=" + escape($("#dropdownMenuButton").text());
             url += "&q=" + escape($("#authText").text());
             url += "&q=" + escape($("#authText2").text());
+            url += "&q=" + escape($("#login-emailT").text());
+            url += "&q=" + escape($("#login-passwordT").text());
+            url += "&q=" + escape($("#h5").text());
+            url += "&q=" + escape($("#loginT2").text());
             //Target language
             url += "&target=" + sel.value;
             //Google API key
@@ -200,6 +204,10 @@
                 $("#dropdownMenuButton").text(data.data.translations[19].translatedText);
                 $("#authText").text(data.data.translations[20].translatedText);
                 $("#authText2").text(data.data.translations[21].translatedText);
+                $("#login-emailT").text(data.data.translations[22].translatedText);
+                $("#login-passwordT").text(data.data.translations[23].translatedText);
+                $("#h5").text(data.data.translations[24].translatedText);
+                $("#loginT2").text(data.data.translations[25].translatedText);
                 console.log(detailsT);
             });
         };

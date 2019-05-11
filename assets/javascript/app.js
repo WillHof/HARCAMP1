@@ -10,7 +10,6 @@ $(document).ready(function () {
     function getKey() {
         database.ref("/apiKey").on("value", function (snapshot) {
             carApiKey = snapshot.val()
-            console.log(carApiKey)
             return carApiKey
         })
     }
