@@ -29,6 +29,7 @@ signupForm.addEventListener('submit', (e) => {
   // get user info
   const email = signupForm['signup-email'].value;
   const password = signupForm['signup-password'].value;
+  console.log(email)
 
   // sign up the user
   auth.createUserWithEmailAndPassword(email, password).then(cred => {
@@ -75,6 +76,7 @@ loginForm.addEventListener('submit', (e) => {
 const saveSearch = document.querySelector('#saveSearch');
 saveSearch.addEventListener('click', (e) => {
   e.preventDefault();
+  console.log("clicked")
   database.ref(`users/${userID}/searches`).push({
     Searches: carURL,
     Make: make,
