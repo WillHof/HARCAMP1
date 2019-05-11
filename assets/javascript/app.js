@@ -40,7 +40,7 @@ $(document).ready(function () {
         latitude = response[0].lat;
         longitude = response[0].lon;
         // carURL = "https://csa-proxy.herokuapp.com/search"
-        carURL = `http://csa-proxy.herokuapp.com/search?api_key=${carApiKey}&year=${year}&make=${make}&model=${model}&latitude=${latitude}&longitude=${longitude}&radius=50&car_type=used&start=0&rows=16`
+        carURL = `https://csa-proxy.herokuapp.com/search?api_key=${carApiKey}&year=${year}&make=${make}&model=${model}&latitude=${latitude}&longitude=${longitude}&radius=50&car_type=used&start=0&rows=16`
         $.ajax({
             url: carURL,
             method: "GET"
