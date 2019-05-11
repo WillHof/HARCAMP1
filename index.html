@@ -25,27 +25,27 @@
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Saved Searches
             </button>
+            <div class="dropdown-menu" id="userSearches" aria-labelledby="dropdownMenuButton"></div>
         </div>
-        <div class="dropdown-menu" id="userSearches" aria-labelledby="dropdownMenuButton">
-            <div class="collapse navbar-collapse" id="navbarsExample09">
-                <ul class="navbar-nav w-100 justify-content-end">
-                    <li class="logged-in">
-                        <a href="#" class="grey-text" id="logoutT" placeholder="Logout" id="logoutT">Logout</a>
-                    </li>
-                    <li class="logged-out">
-                        <a href="#" class="grey-text modal-trigger" data-target="modal-login" id="loginT"
-                            placeholder="Login">Login</a>
-                    </li>
-                    <li class="logged-out">
-                        <a href="#" class="grey-text modal-trigger" data-target="modal-signup" id="signupT"
-                            placeholder="Signup">Sign Up</a>
-                    </li>
-                    <li>
-                        <div class="btn btn-success" id="saveSearch">Save Search</div>
-                    </li>
-                </ul>
-            </div>
-        </div>
+
+        <!-- <div class="collapse navbar-collapse" id="navbarsExample09">
+            <ul class="navbar-nav w-100 justify-content-end">
+                <li class="logged-in">
+                    <a href="#" class="grey-text" placeholder="Logout" id="logout">Logout</a>
+                </li>
+                <li class="logged-out">
+                    <a href="#" class="grey-text modal-trigger" data-target="modal-login" id="loginT"
+                        placeholder="Login">Login</a>
+                </li>
+                <li class="logged-out">
+                    <a href="#" class="grey-text modal-trigger" data-target="modal-signup" id="signupT"
+                        placeholder="Signup">Sign Up</a>
+                </li>
+                <li>
+                    <div class="btn btn-success" id="saveSearch">Save Search</div>
+                </li>
+            </ul>
+        </div> -->
         <div class="collapse navbar-collapse" id="navbarsExample09">
             <ul class="navbar-nav w-100 justify-content-end">
                 <li class="logged-in">
@@ -91,11 +91,11 @@
         <h4 id="h4">Sign up</h4><br />
         <form id="signup-form">
             <div class="input-field">
-                <input type="email" required />
+                <input type="email" id="signup-email" required />
                 <label for="signup-email" id="signup-emailT">Email address</label>
             </div>
             <div class="input-field">
-                <input type="password" required />
+                <input type="password" id="signup-password" required />
                 <label for="signup-password" id="signup-passwordT">Choose password</label>
             </div>
             <button class="btn yellow darken-2 z-depth-0" id="signupT2">Sign up</button>
@@ -110,11 +110,11 @@
         <h4>Login</h4><br />
         <form id="login-form">
             <div class="input-field">
-                <input type="email" id="login-emailT" required />
+                <input type="email" id="login-email" required />
                 <label for="login-email">Email address</label>
             </div>
             <div class="input-field">
-                <input type="password" id="login-passwordT" required />
+                <input type="password" id="login-password" required />
                 <label for="login-password">Your password</label>
             </div>
             <button class="btn yellow darken-2 z-depth-0" id="loginT">Login</button>
@@ -129,11 +129,14 @@
         <div class="row" id="searchRowTop">
             <div class="col-md-12">
                 <form>
-                    <a> <input class="form-control" type="text" /> <label for="location"
+                    <a> <input class="form-control" type="text" id="location" /> <label for="location"
                             id="locationT">Location</label></a>
-                    <a> <input class="form-control" type="text" /> <label for="Year" id="yearT">Year</label></a>
-                    <a> <input class="form-control" type="text" /> <label for="make" id="makeT">Make</label></a>
-                    <a> <input class="form-control" type="text" /> <label for="model" id="modelT">Model</label></a>
+                    <a> <input class="form-control" type="text" id="year" /> <label for="Year"
+                            id="yearT">Year</label></a>
+                    <a> <input class="form-control" type="text" id="make" /> <label for="make"
+                            id="makeT">Make</label></a>
+                    <a> <input class="form-control" type="text" id="model" /> <label for="model"
+                            id="modelT">Model</label></a>
                 </form>
             </div>
         </div>
@@ -173,9 +176,9 @@
             url += "&q=" + "Dealer Zip: ";
             url += "&q=" + "Click for Details";
             url += "&q=" + escape($("#saveSearch").text());
-            url += "&q=" + escape($("#logoutT").text());
-            url += "&q=" + escape($("#loginT").text());
-            url += "&q=" + escape($("#signupT").text());
+            url += "&q=" + escape($("#logout").text());
+            url += "&q=" + escape($("#login-email").text());
+            url += "&q=" + escape($("#signup").text());
             url += "&q=" + escape($("#carSearch").text());
             url += "&q=" + escape($("#locationT").text());
             url += "&q=" + escape($("#yearT").text());
@@ -198,9 +201,9 @@
                 dealerZipT = data.data.translations[4].translatedText;
                 detailsT = data.data.translations[5].translatedText;
                 $("#saveSearch").text(data.data.translations[6].translatedText);
-                $("#logoutT").text(data.data.translations[7].translatedText);
-                $("#loginT").text(data.data.translations[8].translatedText);
-                $("#signupT").text(data.data.translations[9].translatedText);
+                $("#logout").text(data.data.translations[7].translatedText);
+                $("#login-email").text(data.data.translations[8].translatedText);
+                $("#signup").text(data.data.translations[9].translatedText);
                 $("#carSearch").text(data.data.translations[10].translatedText);
                 $("#locationT").text(data.data.translations[11].translatedText);
                 $("#yearT").text(data.data.translations[12].translatedText);
