@@ -8,6 +8,14 @@ $(document).ready(function () {
     var longitude
     var carResults
 
+    function getKey() {
+        database.ref("/apiKey").on("value", function (snapshot) {
+            carApiKey = snapshot.val()
+            console.log(carApiKey)
+            return carApiKey
+        })
+    }
+    getKey()
     function createCars(carResults) {
         $("#appendCars").empty()
         for (i = 0; i < carResults.length; i++) {
