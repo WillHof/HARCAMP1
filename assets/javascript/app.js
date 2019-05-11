@@ -17,7 +17,7 @@ $(document).ready(function () {
        <div class="card-body">
            <h5 class="card-title"></h5>
            <p class="card-text">${nameT} <span id="name${i}">${carResults[i].heading}</span></p>
-           <p class="card-text">${priceT} <span id="price${i}">${carResults[i].price}</span></p>
+           <p class="card-text">${priceT} <span id="price${i}">$ ${carResults[i].price}</span></p>
            <p class="card-text">${mileageT}<span id="miles${i}">${carResults[i].miles}</span></p>
            <p class="card-text">${dealerNameT} <span id="dealerName${i}">${carResults[i].dealer.name}</span></p>
            <p class="card-text">${dealerZipT} <span id="dealerZip${i}">${carResults[i].dealer.zip}</span></p>
@@ -56,7 +56,6 @@ $(document).ready(function () {
             url: locationURL,
             method: "GET"
         }).then(function (response) {
-            console.log(response)
             returnCars(response);
         })
     });
