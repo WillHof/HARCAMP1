@@ -111,7 +111,11 @@ body{
   line-height:64px;
   text-align: center
 }
+<<<<<<< HEAD
 #authText, #authText2 {
+=======
+#authText{
+>>>>>>> master
   line-height:64px;
   text-align: center
 
